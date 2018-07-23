@@ -36,7 +36,7 @@ func New(dbName string) Pkg {
 	var err error
 	postgreProduct, err = postgre.Get(dbName)
 	if err != nil {
-		log.Fatal("error when get db product")
+		log.Fatal("error when get db product", err)
 	}
 	return &pkgUpdater{}
 }
