@@ -1,0 +1,24 @@
+{
+    "updater" : {
+        "connection" :
+        {
+            "name" : "name connection",
+            "connection_string" : "connection string"
+        },
+        "query" : "query postgre"
+    },
+    "receiver" : {
+        "connection" :
+        {
+            "name" : "name connection",
+            "connection_string" : "connection string",
+            "database" : "database name",
+            "collection" : "collection name"
+        }
+    },
+    "date" : {
+        "start" : "2018-01-01",
+        "end" : "2018-07-01",
+        "last_end_date" : "2017-12-31"
+    }
+}

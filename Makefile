@@ -5,12 +5,8 @@ usage: FORCE
 FORCE:
 
 mm: FORCE
-	@echo " >> building main binaries..."
 	@go build ./cmd/mm
-	@echo " >> page app has been built."
-	@echo "call main app..."
 	@./mm
-	@echo "mm is running..."
 
 test:
 	@echo " >> starting go test .."
