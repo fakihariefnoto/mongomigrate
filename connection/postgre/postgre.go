@@ -69,7 +69,10 @@ func (p *pkgDatabase) NewDB(dbName ...string) error {
 		if _, exist := p.Config.Connection[name]; !exist {
 			return errors.New("Database didn't exist, please add config first")
 		}
-		p.AddDB(name, p.Config.Connection[name])
+		err := p.AddDB(name, p.Config.Connection[name])
+		if err != nil {
+			return err
+		}
 	}
 	return nil
 }
@@ -82,6 +85,9 @@ func (p *pkgDatabase) AddDB(name, connString string) error {
 	db, err := openConnection(connString)
 	if err != nil {
 		return errors.Wrap(err, fmt.Sprintf("Fail to connect to %v with connString %v", name, connString))
+	}
+	if db == nil {
+		return errors.New("after connection, db is nill")
 	}
 	dbconn[name] = db
 	return nil
