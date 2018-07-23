@@ -76,6 +76,9 @@ func (p *pkgDatabase) NewDB(dbName ...string) error {
 
 // AddDB is func to add db and connect it and save it to
 func (p *pkgDatabase) AddDB(name, connString string) error {
+	if dbconn == nil || len(dbconn) == 0 {
+		dbconn = make(map[string]*sqlx.DB)
+	}
 	db, err := openConnection(connString)
 	if err != nil {
 		return errors.Wrap(err, fmt.Sprintf("Fail to connect to %v with connString %v", name, connString))

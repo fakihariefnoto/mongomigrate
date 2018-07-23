@@ -47,7 +47,10 @@ func (p *pkgCombinator) setPostre() {
 		p.cfg.Config.Updater.Connection.Name: p.cfg.Config.Updater.Connection.ConnString,
 	}
 	postgrePkg = postgre.New(postgreProductConn)
-	postgrePkg.NewDB(p.cfg.Config.Updater.Connection.Name)
+	err := postgrePkg.NewDB(p.cfg.Config.Updater.Connection.Name)
+	if err != nil {
+		log.Fatalln("Error to add new database, ", err)
+	}
 
 	updaterPkg = updater.New(p.cfg.Config.Updater.Connection.Name)
 }

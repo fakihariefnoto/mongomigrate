@@ -36,7 +36,7 @@ func New(dbName string) Pkg {
 	var err error
 	postgreProduct, err = postgre.Get(dbName)
 	if err != nil {
-		log.Fatal("error when get db product", err)
+		log.Fatal("error when get db -> ", err)
 	}
 	return &pkgUpdater{}
 }
@@ -44,7 +44,7 @@ func New(dbName string) Pkg {
 func (p *pkgUpdater) Update(query string, bn BanNote) error {
 	var err error
 	if postgreProduct == nil {
-		log.Fatal("error when get db")
+		log.Fatal("error when get db, package postgre nill")
 	}
 
 	if query == "" {
